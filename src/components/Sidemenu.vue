@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img class='imgpos' src="../assets/Fissionlogo.png" alt="Fission logo">
+    <img onclick="window.location.href='https://www.fissionlabs.com/'" class='imgpos' src="../assets/Fissionlogo.png" alt="Fission logo">
   </div>
 </template>
 <script>

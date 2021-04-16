@@ -1,6 +1,5 @@
 <template>
   <div class='home'>
-    <Header />
     <!-- <button v-on:click='getUsers'>click for data</button> -->
         <v-simple-table dark>
     <template v-slot:default>

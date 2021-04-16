@@ -15,10 +15,10 @@ export default new Vuex.Store({
     },
     Add_User_formdata: (state, data) => {
       state.userformdata = Object.assign({}, data)
+    },
+    Add_User_previosdata: (state, data) => {
+      state.storepreviosdata = Object.assign({}, data)
     }
-    // Add_User_previosdata: (state, data) => {
-    //   state.storepreviosdata = Object.assign({}, data)
-    // }
   },
   actions: {
     setUsersAction: (state, payload) => {
