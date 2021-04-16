@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Data on form submit</h2>
+    <h2>Form Data</h2>
     <v-simple-table dark>
     <template v-slot:default>
       <thead>
@@ -20,16 +20,12 @@
         </tr>
       </thead>
       <tbody>
-        <!-- <tr
-          v-for="item in desserts"
-          :key="item.name"
-        > -->
-          <td>{{ userformdata.name }}</td>
-          <td>{{ userformdata.phonenumber }}</td>
-          <td>{{ userformdata.email }}</td>
-          <td>{{ userformdata.dateofbirth }}</td>
-          {{storepreviosdata}}
-        <!-- </tr> -->
+        <tr v-for="item in storepreviosdata" :key="item.name">
+          <td>{{ item.name }}</td>
+          <td>{{ item.phonenumber }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.dateofbirth }}</td>
+        </tr>
       </tbody>
     </template>
   </v-simple-table>
@@ -41,8 +37,7 @@ export default {
   name: 'User-detail',
   computed: {
     ...mapState([
-      'userformdata'
-      //   'storepreviosdata'
+      'storepreviosdata'
     ])
   }
 }

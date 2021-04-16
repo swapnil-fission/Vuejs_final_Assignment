@@ -72,14 +72,7 @@
           required
         ></v-checkbox>
       </validation-provider>
-
-      <v-btn
-        class="mr-4"
-        type="submit"
-        :disabled="invalid"
-      >
-        submit
-      </v-btn>
+      <v-btn class="mr-4" type="submit" @click="storingdata" :disabled="invalid">submit</v-btn>
       <v-btn @click="clear">
         clear
       </v-btn>
@@ -136,37 +129,37 @@ export default {
         phonenumber: '',
         email: '',
         dateofbirth: ''
-      },
-      formdata1: {
-        name: '',
-        phonenumber: '',
-        email: '',
-        dateofbirth: ''
       }
     }
   },
-
+  computed: {
+    products () {
+      return this.$store.state.storepreviosdata
+    }
+  },
   methods: {
     ...mapMutations([
-      'Add_User_formdata'
-    //   'Add_User_previosdata'
+      'Add_User_previosdata'
     ]),
     submit () {
       this.$refs.observer.validate()
       this.Add_User_formdata(this.formdata)
-      this.formdata1.name = this.formdata.name
-      this.formdata1.phonenumber = this.formdata.phonenumber
-      this.formdata1.email = this.formdata.email
-      this.formdata1.dateofbirth = this.formdata.dateofbirth
-      //   this.Add_User_previosdata(this.formdata1)
       this.formdata.name = this.formdata.phonenumber = this.formdata.email = this.formdata.dateofbirth = ''
       event.target.reset()
+    },
+    storingdata () {
+      var obj = {
+        name: this.formdata.name,
+        phonenumber: this.formdata.phonenumber,
+        email: this.formdata.email,
+        dateofbirth: this.formdata.dateofbirth
+      }
+      this.products.push(obj)
     },
     clear () {
       this.name = ''
       this.phoneNumber = ''
       this.email = ''
-      //   this.select = null
       this.dateofbirth = ''
       this.checkbox = null
       this.$refs.observer.reset()
