@@ -20,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in storepreviosdata" :key="item.name">
+        <tr v-for="item in listofformdata" :key="item.name">
           <td>{{ item.name }}</td>
           <td>{{ item.phonenumber }}</td>
           <td>{{ item.email }}</td>
@@ -32,12 +32,13 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 export default {
   name: 'User-detail',
   computed: {
+    ...mapGetters(['listofformdata']),
     ...mapState([
-      'storepreviosdata'
+      'userformdata'
     ])
   }
 }

@@ -46,7 +46,7 @@
           required
         ></v-text-field>
       </validation-provider>
-      <validation-provider
+      <!-- <validation-provider
         v-slot="{ errors }"
         name="dateofbirth"
         :rules="{required:true,regex:'^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$'}"
@@ -57,7 +57,13 @@
           label="Date of birth:-- MM/DD/YYYY"
           required
         ></v-text-field>
-      </validation-provider>
+      </validation-provider> -->
+      <v-text-field
+        v-model="formdata.dateofbirth"
+        :rules="endRules"
+        type="date"
+        label="Date">
+        </v-text-field>
       <validation-provider
         v-slot="{ errors }"
         rules="required"
@@ -73,9 +79,7 @@
         ></v-checkbox>
       </validation-provider>
       <v-btn class="mr-4" type="submit" @click="storingdata" :disabled="invalid">submit</v-btn>
-      <v-btn @click="clear">
-        clear
-      </v-btn>
+      <v-btn @click="clear">clear</v-btn>
     </form>
   </validation-observer>
 </div>
@@ -137,8 +141,10 @@ export default {
       return this.$store.state.storepreviosdata
     }
   },
+  // mounted () { this.storingdata() },
   methods: {
     ...mapMutations([
+      'Add_User_formdata',
       'Add_User_previosdata'
     ]),
     submit () {
@@ -160,6 +166,7 @@ export default {
       this.name = ''
       this.phoneNumber = ''
       this.email = ''
+      //   this.select = null
       this.dateofbirth = ''
       this.checkbox = null
       this.$refs.observer.reset()
