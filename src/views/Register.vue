@@ -78,7 +78,9 @@
           required
         ></v-checkbox>
       </validation-provider>
+      <router-link to="/user-detail">
       <v-btn class="mr-4" type="submit" @click="storingdata" :disabled="invalid">submit</v-btn>
+      </router-link>
       <v-btn @click="clear">clear</v-btn>
     </form>
   </validation-observer>
